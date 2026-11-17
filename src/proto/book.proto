@@ -1,0 +1,30 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.ds.proto";
+
+message Book {
+    string title = 1;
+    string author = 2;
+    string isbn = 3;
+    int32 year = 4;
+
+    enum Category {
+        UNKNOWN = 0;
+        SCIENCE = 1;
+        TECHNOLOGY = 2;
+        NOVEL = 3;
+    }
+
+    Category category = 5;
+}
+
+
+message GetBookRequest {
+    string isbn = 1;
+}
+
+service BookService {
+    rpc GetBook(GetBookRequest) returns (Book);
+}
